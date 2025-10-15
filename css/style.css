@@ -1,0 +1,895 @@
+/* assets/css/style.css - Enhanced dark theme for PC Centre */
+/* Import Google Fonts for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+:root {
+  --accent: #0d47a1;
+  /* Primary accent color: dark blue */
+  --accent-hover: #1565c0;
+  /* Hover state for accent */
+  --bg: #000000;
+  /* Main background: darker */
+  --card: #0f172a;
+  /* Card background: darker blue */
+  --card-hover: #1e293b;
+  /* Card hover background: lighter blue */
+  --muted: #94a3b8;
+  /* Muted text color: darker silver */
+  --gradient-bg: linear-gradient(135deg, #000000 0%, #0d47a1 100%);
+  /* Background gradient: darker to dark blue */
+  --shadow: 0 4px 20px rgba(13, 71, 161, 0.15);
+  /* Subtle dark blue shadow */
+}
+
+* {
+  box-sizing: border-box
+}
+
+/* Ensure consistent box model */
+body {
+  background: var(--gradient-bg);
+  /* Apply gradient background */
+  color: #ffffff;
+  /* White text for dark background */
+  font-family: 'Montserrat', Inter, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+  /* Use Montserrat as primary font */
+  line-height: 1.6;
+  /* Improved line height for readability */
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  /* Ensure full height */
+}
+
+collapse navbar-collapse {
+  background-color: #000000;
+}
+
+a {
+  color: #87CEEB;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Smooth transitions */
+a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+/* Navbar branding */
+.pccentre-logo {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+  font-weight: 700;
+  text-shadow: var(--shadow);
+}
+
+.pccentre-logo .pc {
+  color: var(--accent);
+  font-size: 1.25rem;
+  text-shadow: 0 0 10px var(--accent);
+}
+
+.pccentre-logo .centre {
+  color: #e3eaf2
+}
+
+.pccentre-logo .logo-bar {
+  width: 26px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent), #b0bec5);
+  border-radius: 3px;
+  display: inline-block;
+  box-shadow: 0 0 6px var(--accent);
+  transition: transform 0.3s ease;
+}
+
+.pccentre-logo:hover .logo-bar {
+  transform: scaleX(1.2);
+}
+
+/* Hover effect on logo bar */
+
+/* Buttons */
+.btn-main {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: .6rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+
+.btn-main:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px #1976d2;
+}
+
+/* Sections */
+.section-title {
+  color: #87CEEB;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px #87CEEB;
+  transition: color 0.3s ease;
+}
+
+.section-title:hover {
+  color: #ffffff;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #87CEEB;
+}
+
+/* Cards and product styles */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  color: #ffffff;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  font-family: 'Montserrat', Inter, system-ui;
+}
+
+.card p {
+  color: var(--accent);
+}
+
+.price-text {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.card:hover {
+  background: var(--card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px #1976d2;
+}
+
+.product-card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.product-card img {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.display-card img {
+  height: 150px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.modem-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.board-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.notebook-card img {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.storage-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.memory-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.sound-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.input-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.printer-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.scanner-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.ups-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.accessories-card img {
+  height: 180px;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Brands */
+.marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.brands-marquee {
+  display: flex;
+  gap: 1rem;
+  animation: marquee 20s linear infinite;
+}
+
+.brand-card {
+  background: transparent;
+  padding: .8rem 1.2rem;
+  border-radius: 10px;
+  min-width: 150px;
+  min-height: 80px;
+  text-align: center;
+  color: #b0bec5;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  max-width: 100%;
+  max-height: 100px;
+  object-fit: contain;
+}
+
+.brand-card:hover {
+  transform: scale(1.05);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(90deg, #0b1320 40%, #1da1f2 100%);
+  color: #fff;
+  padding: 3rem 0 2rem 0;
+  margin-top: 4rem;
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid #1da1f2;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  gap: 8px;
+}
+.footer-logo .pc {
+  color: #1da1f2;
+}
+.footer-logo .centre {
+  color: #fff;
+}
+.footer-logo .logo-bar {
+  display: inline-block;
+  width: 25px;
+  height: 6px;
+  background: linear-gradient(90deg, #1da1f2 60%, #fff 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 6px #1da1f2;
+}
+
+.footer-links a {
+  color: #a5b8d8;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-links a:hover {
+  color: #1da1f2;
+  transform: scale(1.1);
+}
+
+.footer-social a {
+  color: #fff;
+  margin: 0 10px;
+  font-size: 1.3rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-social a:hover {
+  color: #1da1f2;
+  transform: translateY(-5px);
+}
+
+.footer-newsletter {
+  margin-bottom: 1.5rem;
+}
+
+.footer-newsletter input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #1da1f2;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.footer-newsletter input::placeholder {
+  color: #a5b8d8;
+}
+
+.footer-newsletter button {
+  background: #1da1f2;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.footer-newsletter button:hover {
+  background: #0b1320;
+}
+
+.footer-bottom {
+  margin-top: 1.5rem;
+  color: #a5b8d8;
+  font-size: 0.9rem;
+}
+
+/* Scroll to Top Button */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #1da1f2;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.5rem;
+  display: none;
+  box-shadow: 0 0 12px #1da1f2;
+  transition: background 0.3s, transform 0.3s;
+  z-index: 1000;
+}
+#scrollTopBtn:hover {
+  background-color: #0b1320;
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px #1da1f2;
+}
+
+/* Categories grid */
+.category-card {
+  padding: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all .25s ease;
+  border-radius: 12px;
+  background: var(--card);
+  color: #b0bec5;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px #1976d2;
+  background: var(--card-hover);
+  color: #fff;
+}
+
+/* Product thumb */
+.thumb {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: .9;
+  transition: all 0.3s ease;
+}
+
+.thumb:hover {
+  opacity: 1;
+  transform: scale(1.02);
+  box-shadow: var(--shadow);
+}
+
+#main-image {
+  max-height: 400px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Additional enhancements */
+.hero {
+  background: linear-gradient(135deg, #121212 0%, #1976d2 100%);
+  padding: 2rem 0;
+}
+
+.carousel-item img {
+  filter: brightness(0.9) grayscale(10%);
+  transition: filter 0.3s ease;
+}
+
+.carousel-item:hover img {
+  filter: brightness(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .container {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .product-card img {
+    height: 180px;
+  }
+  .notebook-card img {
+    height: 200px;
+  }
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-links {
+    margin-top: 1rem;
+  }
+  .card {
+    margin-bottom: 1rem;
+  }
+  .row {
+    --bs-gutter-x: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 0.9rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .product-card img {
+    height: auto;
+    max-height: 200px;
+  }
+  .notebook-card img {
+    height: auto;
+    max-height: 220px;
+  }
+  .pccentre-logo {
+    font-size: 1rem;
+  }
+  .pccentre-logo .pc {
+    font-size: 1rem;
+  }
+  .btn-main {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .card {
+    margin-bottom: 1rem;
+  }
+  .footer {
+    padding: 2rem 0 1rem 0;
+  }
+  .footer-links a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+  .brands-marquee {
+    gap: 0.5rem;
+  }
+  .brand-card {
+    min-width: 120px;
+    padding: 0.6rem 0.8rem;
+  }
+  #hero-slider h1 {
+    font-size: 2rem;
+  }
+  #hero-slider p {
+    font-size: 1rem;
+  }
+  #main-image {
+    max-height: 300px;
+  }
+  .thumb {
+    height: 60px;
+    width: 60px;
+  }
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 1rem;
+    border-radius: 0 0 10px 10px;
+  }
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .col-md-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 1rem 0;
+  }
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+  .hero p {
+    font-size: 0.8rem;
+  }
+  .section-title {
+    font-size: 1.3rem;
+  }
+  .pccentre-logo {
+    font-size: 0.9rem;
+  }
+  .pccentre-logo .pc {
+    font-size: 0.9rem;
+  }
+  .navbar-nav .nav-link {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .btn-main {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  .card p-3 {
+    padding: 1rem !important;
+  }
+  .footer-logo {
+    font-size: 1.5rem;
+  }
+  .footer-links a {
+    font-size: 0.9rem;
+  }
+  #hero-slider h1 {
+    font-size: 1.5rem;
+  }
+  #hero-slider p {
+    font-size: 0.9rem;
+  }
+  #scrollTopBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    bottom: 20px;
+    right: 20px;
+  }
+  .catalogue-page body {
+    padding-bottom: 150px;
+  }
+  .col-md-4, .col-md-6, .col-md-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .row {
+    --bs-gutter-x: 0.5rem;
+  }
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.3rem;
+  }
+  .hero p {
+    font-size: 0.75rem;
+  }
+  .section-title {
+    font-size: 1.2rem;
+  }
+  .pccentre-logo {
+    font-size: 0.8rem;
+  }
+  .pccentre-logo .pc {
+    font-size: 0.8rem;
+  }
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+  }
+  .btn-main {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  .product-card img {
+    height: 150px;
+  }
+  .footer {
+    padding: 1.5rem 0 1rem 0;
+  }
+  .footer-logo {
+    font-size: 1.3rem;
+  }
+  #hero-slider h1 {
+    font-size: 1.3rem;
+  }
+  #hero-slider p {
+    font-size: 0.8rem;
+  }
+  .card {
+    padding: 0.5rem;
+  }
+  .display-4 {
+    font-size: 2rem;
+  }
+  .lead {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra small devices (phones, 320px and up) */
+@media (max-width: 320px) {
+  .hero h1 {
+    font-size: 1.1rem;
+  }
+  .hero p {
+    font-size: 0.7rem;
+  }
+  .section-title {
+    font-size: 1.1rem;
+  }
+  .pccentre-logo {
+    font-size: 0.7rem;
+  }
+  .pccentre-logo .pc {
+    font-size: 0.7rem;
+  }
+  .btn-main {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.7rem;
+  }
+  .footer-logo {
+    font-size: 1.1rem;
+  }
+  .card {
+    padding: 0.25rem;
+  }
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .navbar-nav .nav-link {
+    padding: 0.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+  .hero h1 {
+    font-size: 4rem;
+  }
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Ensure all images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive tables if any */
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Responsive forms */
+.form-control {
+  width: 100%;
+}
+
+/* Responsive navigation */
+.navbar-nav {
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+  }
+}
+
+/* Hero Slider Styles */
+#hero-slider .carousel-item {
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+#hero-slider h1 {
+  font-size: 3rem;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+#hero-slider p {
+  font-size: 1.25rem;
+  color: #cdd3d8;
+}
+
+#hero-slider .btn-main {
+  background: #0d47a1;
+  border: none;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+#hero-slider .btn-main:hover {
+  background: #1565c0;
+  transform: scale(1.05);
+}
+
+/* Testimonials */
+.testimonials .card {
+  background: var(--card);
+  color: #ffffff;
+  border: 1px solid #87CEEB;
+  transition: all 0.3s ease;
+}
+
+.testimonials .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(135, 206, 235, 0.3);
+}
+
+.testimonials .blockquote-footer {
+  color: #87CEEB;
+}
+
+/* Catalogue page specific styles */
+.catalogue-page .footer {
+  margin-top: 0;
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.catalogue-page body {
+  padding-bottom: 200px; /* Adjust based on footer height */
+}
+
+/* Login page specific styles */
+.login-page .footer {
+  margin-top: 0;
+}
+
+
+
+/* Placeholder text styling for login and sign up forms */
+input::placeholder {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Highlight PC Centre headings in About Us page */
+.about-us-highlight {
+  background: linear-gradient(45deg, #0d47a1, #1565c0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(13, 71, 161, 0.5);
+}

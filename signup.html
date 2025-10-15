@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PC Centre - Sign Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand pccentre-logo" href="index.html">
+        <span class="pc">PC</span><span class="logo-bar"></span><span class="centre">Centre</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+          <li class="nav-item"><a href="faqs.html" class="nav-link">Help & FAQs</a></li>
+          <li class="nav-item"><a href="catalogue.html" class="nav-link">Catalogue</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+          <li class="nav-item"><a href="signup.html" class="nav-link active">Sign Up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sign Up Section -->
+  <section class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card p-4">
+          <h2 class="section-title text-center mb-4">Create Your Account</h2>
+          <p class="text-center text-muted mb-4">Join PC Centre to access exclusive deals and track your orders</p>
+
+          <form id="signup-form">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="first-name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first-name" placeholder="Enter your first name" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="last-name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last-name" placeholder="Enter your last name" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+              <div class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+              <div class="form-text">Password must be at least 8 characters long.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirm-password" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Account Type</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="account-type" id="personal" value="personal" checked>
+                <label class="form-check-label" for="personal">
+                  Personal Account
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="account-type" id="business" value="business">
+                <label class="form-check-label" for="business">
+                  Business Account
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="agree-terms" required>
+              <label class="form-check-label" for="agree-terms">
+                I agree to the <a href="#" class="text-decoration-none">Terms & Conditions</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
+              </label>
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="newsletter">
+              <label class="form-check-label" for="newsletter">
+                Subscribe to our newsletter for exclusive deals and updates
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-main w-100 mb-3">Create Account</button>
+
+            <div class="text-center">
+              <p class="mb-0">Already have an account? <a href="login.html" class="text-decoration-none">Login here</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer mt-5">
+    <div class="container">
+      <div class="footer-top d-flex justify-content-between align-items-center flex-wrap">
+        <div class="footer-logo"><span class="pc">PC</span><span class="logo-bar"></span><span class="centre">Centre</span></div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="faqs.html">Help & FAQs</a>
+          <a href="catalogue.html">Catalogue</a>
+          <a href="contact.html">Contact</a>
+          <a href="about.html">About Us</a>
+          <a href="login.html">Login</a>
+          <a href="signup.html">Sign Up</a>
+        </div>
+      </div>
+      <div class="footer-bottom mt-3">&copy; 2025 PC Centre. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#signup-form').submit(function(e) {
+        e.preventDefault();
+
+        const firstName = $('#first-name').val().trim();
+        const lastName = $('#last-name').val().trim();
+        const email = $('#email').val().trim();
+        const phone = $('#phone').val().trim();
+        const password = $('#password').val();
+        const confirmPassword = $('#confirm-password').val();
+        const agreeTerms = $('#agree-terms').is(':checked');
+
+        // Validation
+        if (!firstName || !lastName || !email || !phone || !password || !confirmPassword) {
+          alert('Please fill in all required fields');
+          return;
+        }
+
+        if (password.length < 8) {
+          alert('Password must be at least 8 characters long');
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert('Passwords do not match');
+          return;
+        }
+
+        if (!agreeTerms) {
+          alert('Please agree to the Terms & Conditions');
+          return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert('Please enter a valid email address');
+          return;
+        }
+
+        // Phone validation (basic)
+        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+        if (!phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''))) {
+          alert('Please enter a valid phone number');
+          return;
+        }
+
+        // Success - in a real app, this would send data to server
+        alert('Account created successfully! Welcome to PC Centre.');
+        $(this)[0].reset();
+        // Optionally redirect to login page
+        // window.location.href = 'login.html';
+      });
+    });
+  </script>
+</body>
+</html>

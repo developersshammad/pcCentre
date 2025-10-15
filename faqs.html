@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PC Centre - Help & FAQs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand pccentre-logo" href="index.html"><span class="pc">PC</span><span
+          class="logo-bar"></span><span class="centre">Centre</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+          <li class="nav-item"><a href="faqs.html" class="nav-link active">Help & FAQs</a></li>
+          <li class="nav-item"><a href="catalogue.html" class="nav-link">Catalogue</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section class="hero my-5 position-relative" style="color: #1da1f2; padding: 5rem 0;" data-aos="fade-up">
+    <video autoplay muted loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+      <source src="video/helps&faqs.mp4" type="video/mp4">
+    </video>
+    <div class="container text-center" style="background: rgba(0,0,0,0.6); padding: 2rem; border-radius: 10px;">
+      <h2 class="section-title">Help & FAQs</h2>
+      <p class="lead mb-4">Find answers to common questions about our products, services, and support.</p>
+      <div class="row">
+        <div class="col-md-8" data-aos="fade-right">
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#q1">Where can I find support centres?</button></h2>
+              <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Support centres are located in Lahore, Karachi, Islamabad and Rawalpindi.
+                  Click dealer locator on catalogue page for addresses.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#q2">What is the warranty policy?</button></h2>
+              <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Most products include 1 year manufacturer's warranty. Some components have
+                  different warranty periods—check product detail or catalogue.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#q3">How to return or exchange?</button></h2>
+              <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Contact support or nearest dealer within 7 days for return/exchange
+                  instructions. Keep invoice and packaging.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#q4">Do you offer financing options?</button></h2>
+              <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Yes, we partner with banks to offer installment plans on select products.
+                  Contact your nearest dealer for details.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#q5">How can I track my order?</button></h2>
+              <div id="q5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Once your order is placed, you'll receive a tracking number via email or
+                  SMS. Use it on the dealer's website to track delivery.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#q6">Are products available for pickup?</button></h2>
+              <div id="q6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Yes, most dealers offer in-store pickup. Check availability on the catalogue
+                  page or contact the dealer directly.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-left">
+          <div class="card p-3" style="background: rgba(15, 23, 42, 0.8); color: white;">
+            <h5>Dealer Locations</h5>
+            <p>Use the catalogue page to find authorized dealers with address and contact.</p>
+            <a href="catalogue.html" class="btn btn-main">Open Catalogue</a>
+          </div>
+          <div class="card p-3 mt-3" style="background: rgba(15, 23, 42, 0.8); color: white;">
+            <h5>Contact Support</h5>
+            <p>Need more help? Reach out to our support team.</p>
+            <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer mt-5">
+    <div class="container">
+      <div class="footer-top d-flex justify-content-between align-items-center flex-wrap">
+        <div class="footer-logo"><span class="pc">PC</span><span class="logo-bar"></span><span class="centre">Centre</span></div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="faqs.html">Help & FAQs</a>
+          <a href="catalogue.html">Catalogue</a>
+          <a href="contact.html">Contact</a>
+          <a href="about.html">About Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom mt-3">&copy; 2025 PC Centre. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
