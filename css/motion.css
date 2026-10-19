@@ -1,0 +1,221 @@
+/* PC Centre — motion layer.
+   Everything here only applies when html.motion is set (added in <head> unless the
+   visitor prefers reduced motion), so the site stays fully usable without it. */
+
+:root{
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+}
+
+/* Cross-page transitions (Chromium, Safari 18+) */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vt-out .28s var(--ease-out) both}
+::view-transition-new(root){animation:vt-in .45s var(--ease-out) both}
+@keyframes vt-out{to{opacity:0;transform:translateY(-12px)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(18px)}}
+.site-header{view-transition-name:site-header}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}
+
+.motion body{overflow-x:clip}
+
+/* Scroll progress */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;pointer-events:none;
+  background:linear-gradient(90deg,var(--blue),#64b5ff);transform-origin:0 50%;transform:scaleX(0)}
+
+/* Header: compact + hide on scroll down */
+.motion .site-header{transition:transform .35s var(--ease-out), background .3s, box-shadow .3s}
+.motion .site-header.is-scrolled{background:rgba(13,24,34,.82);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 10px 30px -18px rgba(0,0,0,.6)}
+.motion .site-header.is-hidden{transform:translateY(-100%)}
+.motion body.drawer-open .site-header{transform:none}
+
+/* ---------- Hero intro ---------- */
+.motion .hero video{transform:scale(1.12);transition:transform 2.4s var(--ease-out), opacity 1.2s;opacity:0}
+.motion .hero.is-in video{transform:scale(1.02);opacity:1}
+.hero .display .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.hero .display .w > span{display:inline-block}
+.motion .hero .display .w > span{transform:translateY(105%) rotate(4deg);transform-origin:0 100%}
+.motion .hero.is-in .display .w > span{transform:none;transition:transform 1s var(--ease-out);transition-delay:calc(var(--i) * 70ms + 150ms)}
+.motion .hero .intro-fade{opacity:0;transform:translateY(22px)}
+.motion .hero.is-in .intro-fade{opacity:1;transform:none;transition:opacity .9s var(--ease-out), transform .9s var(--ease-out);transition-delay:calc(var(--d, 0) * 1ms)}
+.hero-glow{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(600px circle at var(--mx,70%) var(--my,40%), rgba(31,122,224,.28), transparent 60%);
+  transition:opacity .4s}
+.hero .scroll-cue{position:absolute;left:50%;bottom:22px;width:26px;height:42px;border:2px solid rgba(255,255,255,.4);border-radius:14px;transform:translateX(-50%)}
+.hero .scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:cue 1.8s var(--ease-out) infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+@media (max-width:640px){.hero .scroll-cue{display:none}}
+
+/* Animated typing placeholder caret */
+.hero-search input::placeholder{transition:opacity .2s}
+
+/* Page hero (inner pages) */
+.motion .page-hero .crumbs,.motion .page-hero h1,.motion .page-hero p,.motion .page-hero .stat-row{animation:rise .8s var(--ease-out) both}
+.motion .page-hero h1{animation-delay:.08s}
+.motion .page-hero p{animation-delay:.16s}
+.motion .page-hero .stat-row{animation-delay:.24s}
+.page-hero{position:relative;overflow:hidden;isolation:isolate}
+.page-hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(rgba(31,122,224,.09) 1px, transparent 1px) 0 0/40px 40px,
+    linear-gradient(90deg, rgba(31,122,224,.09) 1px, transparent 1px) 0 0/40px 40px;
+  -webkit-mask-image:radial-gradient(ellipse at 85% 30%, #000 0%, transparent 65%);
+          mask-image:radial-gradient(ellipse at 85% 30%, #000 0%, transparent 65%)}
+.motion .page-hero::after{animation:grid-drift 18s linear infinite}
+@keyframes grid-drift{to{background-position:40px 40px, 40px 40px}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+
+/* ---------- Scroll reveal ---------- */
+.motion [data-reveal]{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease-out), transform .75s var(--ease-out);transition-delay:calc(var(--stagger, 0) * 55ms)}
+.motion [data-reveal="left"]{transform:translateX(-40px)}
+.motion [data-reveal="right"]{transform:translateX(40px)}
+.motion [data-reveal="zoom"]{transform:scale(.92)}
+.motion [data-reveal].is-visible{opacity:1;transform:none}
+
+/* Section headings: underline draw */
+.section-head h2,.split h2{position:relative}
+.motion .section-head h2::after{content:"";position:absolute;left:0;bottom:-10px;height:3px;width:56px;border-radius:2px;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;transition:transform 1s var(--ease-out) .25s}
+.motion .section-head.is-visible h2::after{transform:scaleX(1)}
+
+/* ---------- Category rack ---------- */
+.cat-rack a{position:relative;overflow:hidden}
+.cat-rack a::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(31,122,224,.14) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease-out)}
+.cat-rack a:hover::before{transform:translateX(120%)}
+.cat-rack i{transition:transform .5s var(--ease-spring)}
+.cat-rack a:hover i{transform:translateY(-4px) scale(1.18) rotate(-6deg)}
+
+/* ---------- Product cards: 3D tilt + glare ---------- */
+.grid{perspective:1200px}
+.p-card,.cat-item{will-change:transform;transition:transform .5s var(--ease-out), box-shadow .5s var(--ease-out), border-color .3s}
+.p-card.is-tilting,.cat-item.is-tilting{transition:transform .12s linear, box-shadow .3s}
+.p-card:hover,.cat-item:hover{box-shadow:0 30px 50px -28px rgba(19,32,43,.45)}
+.p-card .media img,.cat-item .media img{transition:transform .7s var(--ease-out)}
+.p-card:hover .media img,.cat-item:hover .media img{transform:scale(1.07)}
+.p-card .glare,.cat-item .glare{position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--gx,50%) var(--gy,0%), rgba(255,255,255,.55), transparent 45%);mix-blend-mode:soft-light}
+.p-card:hover .glare,.cat-item:hover .glare{opacity:1}
+.add-btn{transition:background .2s, transform .35s var(--ease-spring)}
+.add-btn:hover{transform:scale(1.1)}
+.add-btn:active{transform:scale(.9)}
+.wish{transition:transform .35s var(--ease-spring), color .2s, border-color .2s}
+.wish:hover{transform:scale(1.12)}
+.wish.pop{animation:heart-pop .5s var(--ease-spring)}
+@keyframes heart-pop{0%{transform:scale(1)}35%{transform:scale(1.45)}100%{transform:scale(1)}}
+
+/* Grid re-render (filters/search) */
+.motion .grid > .enter{animation:card-in .6s var(--ease-out) both;animation-delay:calc(var(--stagger,0) * 35ms)}
+@keyframes card-in{from{opacity:0;transform:translateY(24px) scale(.96)}}
+
+/* ---------- Fly to cart ---------- */
+.fly-img{position:fixed;z-index:130;pointer-events:none;border-radius:12px;object-fit:contain;background:#fff;box-shadow:0 18px 40px -10px rgba(19,32,43,.45)}
+.badge.bump{animation:badge-bump .6s var(--ease-spring)}
+@keyframes badge-bump{0%{transform:scale(1)}40%{transform:scale(1.7)}100%{transform:scale(1)}}
+[data-open-cart].shake{animation:cart-shake .5s var(--ease-out)}
+@keyframes cart-shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-14deg)}50%{transform:rotate(10deg)}75%{transform:rotate(-5deg)}}
+.motion .cart-line{animation:line-in .45s var(--ease-out) both}
+@keyframes line-in{from{opacity:0;transform:translateX(24px)}}
+
+/* ---------- Brand marquee ---------- */
+.motion .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.motion .marquee .brands{display:flex;width:max-content;gap:12px}
+.motion .marquee .brands a{width:180px;flex:none}
+.motion .marquee .brands{animation:marquee 28s linear infinite}
+.marquee:hover .brands{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(calc(-50% - 6px))}}
+.brands img{transition:transform .4s var(--ease-spring)}
+.brands a:hover img{transform:scale(1.12)}
+
+/* ---------- Deals ---------- */
+.deal-main img{transition:transform 1.2s var(--ease-out)}
+.deal-main:hover img{transform:scale(1.06)}
+.deal{transition:transform .4s var(--ease-out), border-color .3s, box-shadow .4s}
+.deal:hover{transform:translateX(6px);box-shadow:-6px 0 0 var(--blue)}
+
+/* ---------- Dark band spotlight ---------- */
+.band{position:relative;overflow:hidden;isolation:isolate}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;
+  background:radial-gradient(500px circle at var(--sx,50%) var(--sy,50%), rgba(31,122,224,.22), transparent 60%)}
+.band:hover::before{opacity:1}
+.dealer-list li{transition:background .3s}
+.dealer-list li:hover{background:#18303f}
+
+/* ---------- Buttons ---------- */
+.btn{position:relative;overflow:hidden;transition:background .2s, border-color .2s, color .2s, transform .35s var(--ease-out)}
+.btn .ripple{position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,.45);pointer-events:none;animation:ripple .65s var(--ease-out)}
+.btn-ghost .ripple,.btn-light .ripple{background:rgba(31,122,224,.25)}
+@keyframes ripple{to{transform:scale(1);opacity:0}}
+.magnetic{will-change:transform}
+
+/* ---------- Reviews ---------- */
+.review{transition:transform .5s var(--ease-out), box-shadow .5s}
+.review:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:0 24px 40px -26px rgba(19,32,43,.4)}
+.motion .review.is-visible .stars{animation:stars .9s var(--ease-out) .3s both}
+@keyframes stars{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+
+/* ---------- CTA ---------- */
+.cta{position:relative;overflow:hidden;isolation:isolate}
+.cta::before{content:"";position:absolute;width:420px;height:420px;right:-120px;top:-180px;z-index:-1;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.28), transparent 65%)}
+.motion .cta::before{animation:orb 9s ease-in-out infinite alternate}
+@keyframes orb{to{transform:translate(-160px,120px) scale(1.25)}}
+
+/* ---------- Detail page ---------- */
+.gallery .main img{transition:opacity .35s, transform .5s var(--ease-out)}
+.gallery .main img.swap{opacity:0;transform:scale(.94)}
+.gallery .main{cursor:zoom-in}
+.gallery .main.zoomed img{transform:scale(1.8);cursor:zoom-out}
+.thumbs button{transition:border-color .2s, transform .3s var(--ease-spring)}
+.thumbs button:hover{transform:translateY(-3px)}
+.motion .pd .info > *{animation:rise .7s var(--ease-out) both;animation-delay:calc(var(--i,0) * 60ms + 100ms)}
+.motion .pd .gallery{animation:zoom-in .9s var(--ease-out) both}
+@keyframes zoom-in{from{opacity:0;transform:scale(.94)}}
+.specs tr{transition:background .2s}
+.specs tr:hover td,.specs tr:hover th{background:var(--blue-wash)}
+
+/* ---------- Tabs ---------- */
+.tabs{position:relative}
+.tabs .tab-ink{position:absolute;bottom:-1px;height:2px;background:var(--blue);transition:left .45s var(--ease-out), width .45s var(--ease-out)}
+.tabs.has-ink button[aria-selected="true"]{border-color:transparent}
+
+/* ---------- FAQ ---------- */
+.faq details p{animation:none}
+.motion .faq details[open] p{animation:rise .45s var(--ease-out)}
+.faq summary{transition:color .2s, padding-left .3s var(--ease-out)}
+.faq summary:hover{color:var(--blue-deep);padding-left:6px}
+
+/* ---------- Forms ---------- */
+.motion .field.invalid input,.motion .field.invalid textarea{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.notice.show{animation:rise .4s var(--ease-out)}
+
+/* ---------- Toast ---------- */
+.toast{transition:opacity .25s, transform .45s var(--ease-spring)}
+
+/* ---------- Floating WhatsApp ---------- */
+.wa-float{transition:transform .35s var(--ease-spring)}
+.wa-float:hover{transform:scale(1.1) rotate(-8deg)}
+.motion .wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ping 2.6s var(--ease-out) infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.8}80%,100%{transform:scale(1.7);opacity:0}}
+
+/* ---------- Timeline / values / team ---------- */
+.motion .timeline{border-left-color:transparent;position:relative}
+.motion .timeline::before{content:"";position:absolute;left:-2px;top:0;width:2px;height:100%;background:var(--line)}
+.motion .timeline::after{content:"";position:absolute;left:-2px;top:0;width:2px;height:calc(var(--tl,0) * 100%);background:var(--blue);transition:height .2s linear}
+.values div i{transition:transform .5s var(--ease-spring)}
+.values div:hover i{transform:scale(1.25) rotate(-8deg)}
+.member{transition:transform .45s var(--ease-out), box-shadow .45s}
+.member:hover{transform:translateY(-5px);box-shadow:0 22px 36px -24px rgba(19,32,43,.4)}
+.member img{transition:transform .6s var(--ease-spring)}
+.member:hover img{transform:scale(1.08) rotate(3deg)}
+
+/* Auth side image slow drift */
+.motion .auth .side img{animation:kenburns 22s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12) translate(-2%,-2%)}}
+.motion .auth .form-side .inner{animation:rise .8s var(--ease-out) both .1s}
+
+/* Reduced motion: switch off the decorative extras that live outside .motion */
+@media (prefers-reduced-motion:reduce){
+  .cat-rack a::before,.hero .scroll-cue,.p-card .glare,.cat-item .glare{display:none}
+  .marquee .brands{animation:none}
+}

@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/motion.css" rel="stylesheet">
+  <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('motion');setTimeout(function(){var h=document.querySelector('.hero');if(h)h.classList.add('is-in')},3000)}</script>
 </head>
 <body data-page="home">
   <a class="skip" href="#main">Skip to content</a>
@@ -86,14 +88,14 @@
     <section class="section" style="padding-top:0">
       <div class="wrap">
         <div class="section-head"><div><h2>Brands we carry</h2><p>Open a brand to see its catalogue and prices.</p></div></div>
-        <div class="brands">
+        <div class="marquee"><div class="brands">
           <a href="catalogue.html#dell"><img src="dell_logo-removebg-preview.png" alt="Dell" loading="lazy"></a>
           <a href="catalogue.html#hp"><img src="hp_logo-removebg-preview.png" alt="HP" loading="lazy"></a>
           <a href="catalogue.html#acer"><img src="acer_logo-removebg-preview.png" alt="Acer" loading="lazy"></a>
           <a href="catalogue.html#asus"><img src="asus_logo-removebg-preview.png" alt="Asus" loading="lazy"></a>
           <a href="products.html?q=samsung"><img src="samsung_logo-removebg-preview.png" alt="Samsung" loading="lazy"></a>
           <a href="products.html?q=nvidia"><img src="nvidia_logo-removebg-preview.png" alt="NVIDIA" loading="lazy"></a>
-        </div>
+        </div></div>
       </div>
     </section>
 
@@ -129,5 +131,6 @@
   <footer id="site-footer"></footer>
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/motion.js"></script>
 </body>
 </html>
