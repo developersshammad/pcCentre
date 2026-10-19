@@ -1,25 +1,6 @@
-// assets/js/script.js
-// Basic dynamic data and interactions for PC Centre demo site
-$(function(){
-  // Sample news / offers data
-  const news = [
-    {title:'Dell Mega Sale', text:'Flat 20% off on selected Dell laptops until Oct 15. Visit our dealers.'},
-    {title:'RTX Upgrade Offer', text:'Trade-in your old GPU and get discount on new NVIDIA RTX models.'},
-    {title:'Back-to-school Notebooks', text:'Special prices on student-friendly notebooks across brands.'}
-  ];
-
-  // Function to render news items on the home page
-  function renderNews(){
-    const $list = $('#news-list');
-    $list.empty();
-    news.forEach(n=>{
-      const col = $('<div class="col-md-4"><div class="card p-3"><h5>'+n.title+'</h5><p>'+n.text+'</p></div></div>');
-      $list.append(col);
-    });
-  }
-
-  // Categories + subcategories structure
-  const categories = [
+// PC Centre product data
+var PCC = window.PCC = window.PCC || {};
+PCC.categories = [
     {id:'displays', title:'Displays', subs:['Monitors','Projectors']},
     {id:'boards', title:'Motherboards & Processors', subs:['Motherboards','Processors']},
     {id:'notebooks', title:'Notebooks', subs:['Ultrabook','Gaming','Business']},
@@ -33,8 +14,7 @@ $(function(){
     {id:'ups', title:'UPS', subs:['Home','Enterprise']},
     {id:'accessories', title:'Accessories', subs:['Cables','Adapters','Bags']}
   ];
-
-  const sampleProducts = {
+PCC.products = {
     'displays':[
       {id:'d1',title:'Samsung Curved 32"',price:'PKR 78,000',img:['img/Display/samsung1.jpg','img/Display/samsung2.jpg','img/Display/samsung3.jpg'],specs:{'Screen Size':'32" Curved','Resolution':'4K UHD','Refresh Rate':'60Hz','Panel Type':'VA','Connectivity':'HDMI, DisplayPort'},features:['Curved design for immersive viewing','4K resolution','HDR support','Slim bezels']},
       {id:'d2',title:'Dell 24" FHD',price:'PKR 25,000',img:['img/Display/dell1.jpg','img/Display/dell2.jpg','img/Display/dell3.jpg'],specs:{'Screen Size':'24"','Resolution':'1920x1080','Refresh Rate':'75Hz','Panel Type':'IPS','Connectivity':'HDMI, VGA'},features:['Full HD resolution','IPS panel for accurate colors','75Hz refresh rate','VESA mount compatible']},
@@ -169,216 +149,58 @@ $(function(){
     ],
   };
 
-  // Function to render category grid on products page
-  function renderCategories(){
-    const $grid = $('#categories-grid');
-    if(!$grid.length) return;
-    categories.forEach(cat=>{
-      const col = $('<div class="col-md-3"><div class="card category-card p-3" data-id="'+cat.id+'"><h5>'+cat.title+'</h5><p class="small">'+cat.subs.join(' • ')+'</p></div></div>');
-      $grid.append(col);
-    });
-  }
+PCC.categoryInfo = {
+  displays:   {icon:'fa-display',        blurb:'Monitors from 21" office panels to 32" 144Hz gaming screens.'},
+  boards:     {icon:'fa-microchip',      blurb:'AMD and Intel motherboards for budget builds and workstations.'},
+  notebooks:  {icon:'fa-laptop',         blurb:'Laptops for study, office work and gaming.'},
+  storage:    {icon:'fa-hard-drive',     blurb:'SSDs, hard drives and portable backup drives.'},
+  memory:     {icon:'fa-memory',         blurb:'DDR3, DDR4 and DDR5 RAM kits.'},
+  modems:     {icon:'fa-wifi',           blurb:'Wi-Fi routers and 4G modems for home and office.'},
+  sound:      {icon:'fa-headphones',     blurb:'Speakers, wired and wireless headphones.'},
+  input:      {icon:'fa-keyboard',       blurb:'Mice, keyboards and combos.'},
+  printers:   {icon:'fa-print',          blurb:'Inkjet and laser printers, including all-in-ones.'},
+  scanners:   {icon:'fa-file-image',     blurb:'Flatbed, document and book scanners.'},
+  ups:        {icon:'fa-car-battery',    blurb:'Backup power for load-shedding, from 500VA to 1000VA.'},
+  accessories:{icon:'fa-plug',           blurb:'Cables, adapters, bags, webcams and cooling pads.'}
+};
 
-  function showCategoryProducts(catId){
-    const $container = $('#category-products');
-    $container.empty();
-    const products = sampleProducts[catId] || [];
-    if(products.length === 0){
-      $container.append('<div class="alert alert-info">No products available in this category yet. Please check catalogue or try another category.</div>');
-      return;
-    }
-    const row = $('<div class="row g-3"></div>');
-    products.forEach(p=>{
-      const imgSrc = Array.isArray(p.img) ? p.img[0] : p.img;
-      let cardClass = 'product-card';
-      if(catId === 'displays') cardClass += ' display-card';
-      if(catId === 'boards') cardClass += ' board-card';
-      if(catId === 'notebooks') cardClass += ' notebook-card';
-      if(catId === 'storage') cardClass += ' storage-card';
-      if(catId === 'memory') cardClass += ' memory-card';
-      if(catId === 'sound') cardClass += ' sound-card';
-      if(catId === 'input') cardClass += ' input-card';
-      if(catId === 'printers') cardClass += ' printer-card';
-      if(catId === 'scanners') cardClass += ' scanner-card';
-      if(catId === 'ups') cardClass += ' ups-card';
-      if(catId === 'accessories') cardClass += ' accessories-card';
-      if(catId === 'modems') cardClass += ' modem-card';
-      const col = $('<div class="col-md-4"><div class="card p-3 '+cardClass+'"><img src="'+imgSrc+'" alt="'+p.title+'" class="img-fluid mb-2"><h6>'+p.title+'</h6><p class="price-text">'+p.price+'</p><a href="product-detail.html?id='+p.id+'&cat='+catId+'" class="btn btn-main btn-sm">View</a></div></div>');
-      row.append(col);
-    });
-    $container.append(row);
-  }
+PCC.news = [
+  {tag:'Sale', title:'Dell laptops 20% off', text:'Selected Inspiron and Vostro models at all partner dealers while stock lasts.', link:'catalogue.html#dell'},
+  {tag:'Trade-in', title:'Swap your old GPU', text:'Bring your old graphics card to a dealer and get a discount on a new NVIDIA RTX card.', link:'products.html?cat=boards'},
+  {tag:'Students', title:'Back-to-school laptops', text:'Lighter, longer-lasting notebooks with student pricing across brands.', link:'products.html?cat=notebooks'}
+];
 
-  // Product detail interactions (thumb click)
-  $('#thumbs').on('click', '.thumb', function(){
-    const src = $(this).attr('src');
-    $('#main-image').attr('src', src);
-  });
+PCC.dealers = [
+  {city:'Karachi',   area:'Saddar Tech Market',  phone:'+92 21 3456 7890'},
+  {city:'Lahore',    area:'Hafeez Centre',       phone:'+92 42 3576 1234'},
+  {city:'Islamabad', area:'Blue Area, Jinnah Ave',phone:'+92 51 2876 5432'},
+  {city:'Rawalpindi',area:'Saddar, Bank Road',   phone:'+92 51 5512 3344'}
+];
 
-  // Load product details based on URL parameter
-  function loadProductDetail(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-    if(!productId) return;
-
-    // Find product across all categories
-    let product = null;
-    for(const cat in sampleProducts){
-      product = sampleProducts[cat].find(p => p.id === productId);
-      if(product) break;
-    }
-    if(!product) return;
-
-    // Set main image and thumbs
-    const imgs = Array.isArray(product.img) ? product.img : [product.img];
-    $('#main-image').attr('src', imgs[0]);
-    const $thumbs = $('#thumbs');
-    $thumbs.empty();
-    imgs.forEach(img => {
-      $thumbs.append('<img src="'+img+'" class="thumb" width="80" alt="">');
-    });
-
-    // Set title, desc, price
-    $('#product-title').text(product.title);
-    $('#product-price').text(product.price);
-    // Add basic desc if not present
-    $('#product-desc').text('High-quality product for your PC needs.');
-
-    // Set features
-    const $features = $('#product-features');
-    $features.empty();
-    if(product.features && product.features.length > 0){
-      product.features.forEach(feature => {
-        $features.append('<li>' + feature + '</li>');
-      });
-    }
-
-    // Set specs
-    const $specsTable = $('table.table tbody');
-    $specsTable.empty();
-    if(product.specs){
-      Object.keys(product.specs).forEach(key => {
-        $specsTable.append('<tr><td>' + key + '</td><td>' + product.specs[key] + '</td></tr>');
-      });
-    }
-  }
-
-  // Function to update product detail page with specs and features
-  function loadProductDetail(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-    const category = urlParams.get('cat');
-    if(!productId || !category) return;
-
-    let product;
-    for(const cat in sampleProducts){
-      if(cat === category){
-        product = sampleProducts[cat].find(p => p.id === productId);
-        if(product) break;
-      }
-    }
-    if(!product) return;
-
-    // Set main image and thumbs
-    const imgs = Array.isArray(product.img) ? product.img : [product.img];
-    $('#main-image').attr('src', imgs[0]);
-    const $thumbs = $('#thumbs');
-    $thumbs.empty();
-    imgs.forEach(img => {
-      $thumbs.append('<img src="'+img+'" class="thumb" width="80" alt="">');
-    });
-
-    // Set title, desc, price
-    $('#product-title').text(product.title);
-    $('#product-price').text(product.price);
-    // Add basic desc if not present
-    $('#product-desc').text('High-quality product for your needs.');
-
-    // Set features
-    const $featuresList = $('#product-features');
-    $featuresList.empty();
-    if(product.features){
-      product.features.forEach(feature => {
-        $featuresList.append('<li>' + feature + '</li>');
-      });
-    }
-
-    // Set specifications
-    const $specsTable = $('table.table tbody');
-    $specsTable.empty();
-    if(product.specs){
-      Object.keys(product.specs).forEach(key => {
-        $specsTable.append('<tr><td>' + key + '</td><td>' + product.specs[key] + '</td></tr>');
-      });
-    }
-  }
-
-  // Initialize product detail on page load
-  if(window.location.pathname.includes('product-detail.html')){
-    loadProductDetail();
-  }
-
-  // Category click handler (delegated)
-  $(document).on('click', '.category-card', function(){ // fallback
-    const id = $(this).data('id');
-    if(id) showCategoryProducts(id);
-  });
-  $(document).on('click', '.card.category-card', function(){
-    const id = $(this).data('id');
-    if(id) showCategoryProducts(id);
-  });
-
-  // Initialize
-  renderNews();
-  renderCategories();
-
-  // Simple "add to wishlist" feedback
-  $(document).on('click', '#add-wishlist', function(){
-    alert('Product added to wishlist (demo)');
-  });
-
-  // Buy Now button functionality
-  $(document).on('click', '.btn-main', function(){
-    if($(this).text().trim() === 'Buy Now'){
-      alert('Product added to cart!');
-    }
-  });
-
-});
-
-// Hero Slider Animation
-$(document).ready(function() {
-  // Add fade effect manually when slide changes
-  $('#hero-slider').on('slide.bs.carousel', function (e) {
-    let nextH1 = $(e.relatedTarget).find('h1');
-    let nextP = $(e.relatedTarget).find('p');
-    nextH1.addClass('animate__animated animate__fadeInDown');
-    nextP.addClass('animate__animated animate__fadeInUp');
-  });
-});
-
-// Scroll-to-top Button Functionality (if element exists)
-const scrollTopBtn = $("#scrollTopBtn");
-if (scrollTopBtn.length) {
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 150) {
-      scrollTopBtn.fadeIn();
-    } else {
-      scrollTopBtn.fadeOut();
-    }
-  });
-  scrollTopBtn.click(function() {
-    $("html, body").animate({ scrollTop: 0 }, 600);
-    return false;
-  });
-}
-
-// Glow Animation (Footer Logo)
-$(".footer-logo").hover(
-  function() {
-    $(this).find(".logo-bar").css("box-shadow", "0 0 20px #1da1f2");
-  },
-  function() {
-    $(this).find(".logo-bar").css("box-shadow", "0 0 6px #1da1f2");
-  }
-);
+PCC.catalogue = {
+  dell:[
+    {name:'Dell Inspiron 15', spec:'15.6" FHD · Core i5 · 8GB · 512GB SSD', price:145000, city:'Lahore', img:'img/dell catlogues/inspiron.png'},
+    {name:'Dell Vostro 14', spec:'14" FHD · Core i7 · 16GB · 1TB SSD', price:180000, city:'Karachi', img:'img/dell catlogues/vostro.png'},
+    {name:'Dell XPS 13', spec:'13.3" 4K · Core i7 · 16GB · 512GB SSD', price:220000, city:'Islamabad', img:'img/dell catlogues/xps.png'}
+  ],
+  hp:[
+    {name:'HP Pavilion 14', spec:'14" FHD · Ryzen 5 · 8GB · 512GB SSD', price:95000, city:'Lahore', img:'img/hp catalogues/7145kvSFnQL._UF1000_1000_QL80_-removebg-preview.png'},
+    {name:'HP Envy 13', spec:'13.3" FHD · Core i5 · 8GB · 256GB SSD', price:110000, city:'Karachi', img:'img/hp catalogues/71mBOptiStL._UF1000_1000_QL80_-removebg-preview.png'},
+    {name:'HP Omen 15', spec:'15.6" FHD · Core i7 · 16GB · RTX 3060', price:250000, city:'Rawalpindi', img:'img/hp catalogues/81XNAl2qfML._UF1000_1000_QL80_-removebg-preview.png'}
+  ],
+  acer:[
+    {name:'Acer Swift 5', spec:'14" FHD · Core i5 · 8GB · 512GB SSD', price:130000, city:'Lahore', img:'img/Acer catalogues/3743ec8f7a53c1256356961691e0960b_1-removebg-preview.png'},
+    {name:'Acer Aspire 7', spec:'15.6" FHD · Ryzen 5 · 8GB · GTX 1650', price:120000, city:'Karachi', img:'img/Acer catalogues/71aMursJ2IL._AC_SL1280_-removebg-preview.png'},
+    {name:'Acer Predator Helios', spec:'15.6" FHD · Core i7 · 16GB · RTX 3070', price:280000, city:'Islamabad', img:'img/Acer catalogues/81xryaqWfaL._UF350_350_QL80_-removebg-preview.png'}
+  ],
+  asus:[
+    {name:'Asus ROG Strix G15', spec:'15.6" FHD · Ryzen 7 · 16GB · RTX 3060', price:200000, city:'Lahore', img:'img/Asus catalogues/81i5CymmUmL._AC_SL1500_.jpg'},
+    {name:'Asus ZenBook 14', spec:'14" FHD · Core i5 · 8GB · 512GB SSD', price:140000, city:'Karachi', img:'img/Asus catalogues/91We5MfKUNL._AC_SL1500_-removebg-preview.png'},
+    {name:'Asus TUF Gaming F15', spec:'15.6" FHD · Core i5 · 8GB · GTX 1650', price:160000, city:'Rawalpindi', img:'img/Asus catalogues/91l2u22cmyL.jpg'}
+  ],
+  toshiba:[
+    {name:'Toshiba Dynabook', spec:'13.3" FHD · Core i5 · 8GB · 512GB SSD', price:150000, city:'Lahore', img:'img/Toshiba catalogues/61D6nzRpgEL._UF1000_1000_QL80_-removebg-preview.png'},
+    {name:'Toshiba Satellite L15', spec:'15.6" FHD · Core i3 · 8GB · 256GB SSD', price:110000, city:'Islamabad', img:'img/Toshiba catalogues/51H+zptMYDL._UF1000_1000_QL80_-removebg-preview.png'},
+    {name:'Toshiba Portégé', spec:'12.5" FHD · Core i7 · 16GB · 1TB SSD', price:200000, city:'Karachi', img:'img/Toshiba catalogues/AZEZO.png'}
+  ]
+};
